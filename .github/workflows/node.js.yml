@@ -27,14 +27,27 @@ jobs:
     - run: npx playwright install
     - run: npm run test:ui
 
-  deploy_render:
-      runs-on: ubuntu-latest
-      if: github.ref == 'refs/heads/main' #starting deploy if we trigered from main
-      needs: build
-      steps:
-        - name: Deploy to production
-          uses: johnbeynon/render-deploy-action@v0.0.8
-          with:
-            service-id: ${{ secrets.SERVICE_ID }}
-            api-key: ${{ secrets.RENDER_API_KEY }}
-            wait-for-success: true
+#  deploy_render:
+#      runs-on: ubuntu-latest
+#      if: github.ref == 'refs/heads/main' #starting deploy if we trigered from main
+#      needs: build
+#      steps:
+#        - name: Deploy to production
+#          uses: johnbeynon/render-deploy-action@v0.0.8
+#          with:
+#            service-id: ${{ secrets.SERVICE_ID }}
+#            api-key: ${{ secrets.RENDER_API_KEY }}
+#            wait-for-success: true
+
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' #starting deploy if we trigered from main
+    needs: build
+    steps:
+      - name: Deploy to production
+        uses: actions/checkout@v4
+      - uses: JorgeLNJunior/render-deploy@v1.4.4
+        with:
+          service-id: ${{ secrets.SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_API_KEY }}
+          wait_deploy: true
