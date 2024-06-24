@@ -24,6 +24,7 @@ jobs:
     - name: Run Unit tests
       run: npm run test:unit
     - run: npm run start &
+    - run: npx playwright install
     - run: npm run test:ui
 
   deploy_render:
