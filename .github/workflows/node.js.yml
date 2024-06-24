@@ -23,7 +23,7 @@ jobs:
       run: echo "rashkov"
     - name: Run Unit tests
       run: npm run test:unit
-    - run: npm run start
+    - run: npm run start &
     - run: npm run test:ui
 
   deploy_render:
