@@ -12,6 +12,8 @@ COPY . .
 
 VOLUME ["/app/node_modules"]
 
-CMD ["npm", "start"]
+COPY entrypoint.sh /app/entrypoint.sh
 
-#docker file
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT "/entrypoint.sh"

@@ -9,3 +9,11 @@ services:
       - "8080:8080"
     volumes:
       - .:/app
+
+  tests:
+    build: .
+    command: ["./entrypoint.sh"]
+    volumes:
+      - .:/app
+    depends_on:
+      - web
