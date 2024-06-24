@@ -13,3 +13,5 @@ COPY . .
 VOLUME ["/app/node_modules"]
 
 CMD ["npm", "start"]
+
+#docker file
