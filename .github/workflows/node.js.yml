@@ -23,3 +23,15 @@ jobs:
       run: echo "rashkov"
     - name: Run Unit tests
       run: npm run test:unit
+
+  deploy_render:
+      runs-on: ubuntu-latest
+      if: github.ref == 'refs/heads/main' #starting deploy if we trigered from main
+      needs: teststage
+      steps:
+        - name: Deploy to production
+          uses: johnbeynon/render-deploy-action@v0.0.8
+          with:
+            service-id: ${{ secrets.SERVICE_ID }}
+            api-key: ${{ secrets.RENDER_API_KEY }}
+            wait-for-success: true
