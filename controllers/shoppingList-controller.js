@@ -2,7 +2,7 @@ function setup(app, shoppingList) {
   app.get('/', function(req, res) {
     let model = {
       title: "My Shopping List",
-      msg: "My Shopping List",
+      msg: "My shopping list",
       shoppingList: shoppingList
     };
     res.render('home', model);
