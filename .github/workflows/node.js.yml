@@ -20,5 +20,5 @@ jobs:
       run: npm ci
     - name: Printing the SoftUni name step
       run: echo "rashkov"
-    - run: npx playwright install
+    - name: Run Unit tests
     - run: npm run test:unit
