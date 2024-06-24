@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Run install dependencies
-      run: npm ci
+      run: npm install
     - name: Printing the SoftUni name step
       run: echo "rashkov"
     - name: Run Unit tests
